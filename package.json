@@ -1,0 +1,38 @@
+{
+  "name": "mywebsite",
+  "version": "1.0.0",
+  "description": "This package.json is purely for git hooks",
+  "private": true,
+  "author": "Tanner Bell",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/QuietOmen/mywebsite.git"
+  },
+  "homepage": "https://github.com/QuietOmen/mywebsite#readme",
+  "bugs": {
+    "url": "https://github.com/QuietOmen/mywebsite/issues"
+  },
+  "keywords": [
+    "React",
+    "Redux",
+    "Postgres"
+  ],
+  "scripts": {
+    "client-test": "cd ./client && npm run test",
+    "client-lint": "cd ./client && npm run lint",
+    "client-lint:fix": "cd ./client && npm run lint:fix",
+    "pre-commit": "cd ./client && npm run precise-commits",
+    "pre-push": "node ./scripts/pre-push"
+  },
+  "devDependencies": {
+    "husky": "1.0.0-rc.13"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run pre-commit",
+      "pre-push": "npm run pre-push",
+      "...": "..."
+    }
+  }
+}
