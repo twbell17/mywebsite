@@ -1,7 +1,7 @@
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
 
-import { login } from '../repositories/auth'
+import { login, resetPasswordInDB } from '../repositories/auth'
 import { fetchUserByEmail } from '../repositories/users'
 import { verifyAdmin } from '../repositories/admins'
 
@@ -54,4 +54,29 @@ export async function authinticateLoginByJwt(token) {
 
     return
   })
+}
+
+export async function recoverPassword(email) {
+  //Check to see if user exists, if not, throw an err
+  if (!email) {
+    throw new StatusError({ status: 400, msg: 'Must provide email' })
+  }
+
+  const user = await fetchUserByEmail(email)
+
+  if(!user) {
+    throw new StatusError({ status: 400, msg: 'Unsdkfjasldk'})
+  }
+  //if the user exists reset pass to dev
+  //call repo to reset pass
+
+  bcrypt.hash('dev', 10, function(err, hash) {
+    // Store hash in database
+    await resetPasswordInDB(user.Handle, hash)
+  });
+
+
+
+  //Do we need to return data?
+  return {}
 }

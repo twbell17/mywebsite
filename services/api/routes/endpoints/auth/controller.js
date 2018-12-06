@@ -1,4 +1,4 @@
-import { authinticateLogin } from '../../commands/auth'
+import { authinticateLogin, /*import new command for reset pass */ } from '../../commands/auth'
 import wrapAsyncFunc from '../../../common/async-wrapper'
 
 export default class AuthController {
@@ -33,6 +33,7 @@ export default class AuthController {
 
   async recover(req, res) {
     const { email } = req.body
+    /*Create a new command to reset pass */
     res.sendStatus(200)
   }
 

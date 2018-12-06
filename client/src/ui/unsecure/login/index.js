@@ -50,6 +50,12 @@ class LoginPage extends Component {
             </Button>
           </Form>
           <Link to="/forgot-password">Forgot Password?</Link>
+          <h1>
+            <div>New to mywebsite?
+              
+            </div>
+          </h1>
+          <Link to="/create-account">Sign Up!</Link>
         </Content>
       </Page>
     )

@@ -1,14 +1,14 @@
 import React from 'react'
 import { Redirect } from 'react-router-dom'
 
-import * as actions from './actions'
+import * as recoveryActions from './actions'
 import connected from '../../../setup/connect'
 import { selector as users } from '../../../entities/users/reducer'
 
 export const recoverProcess = WrappedComponent => {
   class Login extends React.Component {
     handleClick = (email, password) => {
-      this.props.userAuthActions.recover(email)
+      this.props.recoveryActions.recover(email)
     }
 
     render() {
@@ -20,7 +20,7 @@ export const recoverProcess = WrappedComponent => {
     }
   }
 
-  return connected([users], [actions])(Login)
+  return connected([users], [recoveryActions])(Login)
 }
 
 export default recoverProcess

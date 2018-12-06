@@ -11,3 +11,14 @@ export async function login(userHandle) {
 
   return userAuths[0]
 }
+
+export async function resetPasswordInDB(userHandle) {
+  const query = sql`select * from passhash where user_handle = ${userHandle};`
+
+  const userAuths = await PGWrapper.sqlAndMap(query, (row) => ({
+    userHandle: row.user_handle,
+    passhash: row.passhash
+  }))
+
+  return userAuths[0]
+}
